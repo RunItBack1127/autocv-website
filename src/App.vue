@@ -3,7 +3,10 @@
     <Background/>
   </div>
   <section class="pa-alt-wh" id="site--submission-form-container">
-    <SubmissionForm/>
+    <div id="submission-form-container">
+      <h1>AutoCV</h1>
+      <SubmissionForm/>
+    </div>
   </section>
 </template>
 
@@ -21,13 +24,18 @@ export default {
 </script>
 
 <style>
-body {
-  overflow: hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
 }
 
 #app {
   font-family: 'Radian', sans-serif;
-  font-size: 16px;
   width: 100vw;
   height: 100vh;
 }
@@ -43,6 +51,20 @@ body {
   z-index: 1;
 }
 
+#submission-form-container {
+  width: 80%;
+  max-width: 800px;
+}
+
+#submission-form-container h1 {
+  font-family: "Radian Bold", sans-serif;
+  font-size: 7.5rem;
+  line-height: 7.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
 /* UTILITY CLASSES */
 .pa-alt-wh {
   position: absolute;
@@ -53,12 +75,23 @@ body {
 }
 
 @font-face {
-  src: url('https://raw.githubusercontent.com/RunItBack1127/main/src/assets/fonts/Radian/Radian.ttf');
+  src: url('https://raw.githubusercontent.com/RunItBack1127/autocv-website/main/src/assets/fonts/Radian/Radian.ttf');
   font-family: 'Radian';
 }
 
 @font-face {
-  src: url('https://raw.githubusercontent.com/RunItBack1127/main/src/assets/fonts/Radian/Radian_Bold.ttf');
+  src: url('https://raw.githubusercontent.com/RunItBack1127/autocv-website/main/src/assets/fonts/Radian/Radian_Bold.ttf');
   font-family: 'Radian Bold';
+}
+
+@font-face {
+  src: url('https://raw.githubusercontent.com/RunItBack1127/autocv-website/main/src/assets/fonts/Radian/Radian_Light.ttf');
+  font-family: 'Radian Light';
+}
+
+@media screen and (max-width: 576px) {
+  #submission-form-container h1 {
+    font-size: 4rem;
+  }
 }
 </style>
