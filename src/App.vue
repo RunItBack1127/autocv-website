@@ -52,13 +52,13 @@ body {
   height: 100%;
 }
 
-/* @font-face {
-  src: url('assets/fonts/Radian/Radian.ttf');
+@font-face {
+  src: url('https://raw.githubusercontent.com/RunItBack1127/main/src/assets/fonts/Radian/Radian.ttf');
   font-family: 'Radian';
 }
 
 @font-face {
-  src: url('assets/fonts/Radian/Radian_Bold.ttf');
+  src: url('https://raw.githubusercontent.com/RunItBack1127/main/src/assets/fonts/Radian/Radian_Bold.ttf');
   font-family: 'Radian Bold';
-} */
+}
 </style>
