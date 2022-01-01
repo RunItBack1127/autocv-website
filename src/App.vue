@@ -1,26 +1,64 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="pa-alt-wh" id="site--background-container">
+    <Background/>
+  </div>
+  <section class="pa-alt-wh" id="site--submission-form-container">
+    <SubmissionForm/>
+  </section>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Background from './components/Background.vue';
+import SubmissionForm from './components/SubmissionForm.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Background,
+    SubmissionForm
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  overflow: hidden;
 }
+
+#app {
+  font-family: 'Radian', sans-serif;
+  font-size: 16px;
+  width: 100vw;
+  height: 100vh;
+}
+
+#site--background-container {
+  z-index: -1;
+}
+
+#site--submission-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* UTILITY CLASSES */
+.pa-alt-wh {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* @font-face {
+  src: url('assets/fonts/Radian/Radian.ttf');
+  font-family: 'Radian';
+}
+
+@font-face {
+  src: url('assets/fonts/Radian/Radian_Bold.ttf');
+  font-family: 'Radian Bold';
+} */
 </style>
