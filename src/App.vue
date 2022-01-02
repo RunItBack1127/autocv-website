@@ -2,6 +2,9 @@
   <div class="pa-alt-wh" id="site--background-container">
     <Background/>
   </div>
+  <div class="pa-alt-wh" id="site--loading-screen-container">
+    <LoadingScreen/>
+  </div>
   <section class="pa-alt-wh" id="site--submission-form-container">
     <div id="submission-form-container">
       <h1>AutoCV</h1>
@@ -13,12 +16,14 @@
 <script>
 import Background from './components/Background.vue';
 import SubmissionForm from './components/SubmissionForm.vue';
+import LoadingScreen from './components/LoadingScreen.vue';
 
 export default {
   name: 'App',
   components: {
     Background,
-    SubmissionForm
+    SubmissionForm,
+    LoadingScreen
   }
 }
 </script>
@@ -42,6 +47,10 @@ export default {
 
 #site--background-container {
   z-index: -1;
+}
+
+#site--loading-screen-container {
+  z-index: 1000;
 }
 
 #site--submission-form-container {

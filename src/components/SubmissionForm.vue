@@ -1,9 +1,6 @@
 <template>
-    <form id="cv-submission-form" method="GET" action="https://autocv.herokuapp.com/generate">
+    <form id="cv-submission-form">
         <fieldset>
-            <input type="hidden" name="jobTitleStart" value="Web">
-            <input type="hidden" name="jobTitleEnd" value="Developer">
-
             <section>
                 <label for="nameOfRole">Name Of Role</label>
                 <input required="required" type="text" name="nameOfRole" placeholder="Software Developer">
@@ -25,30 +22,59 @@
 </template>
 
 <script>
+import axios from 'axios';
+import download from 'downloadjs';
+
 export default {
     name: 'SubmissionForm',
     data() {
         return {
-            submissionForm: null
+            PDF_REQUEST_URL: 'https://autocv.herokuapp.com/generate',
+            submissionForm: null,
+            pdfRequest: null
         }
     },
     methods: {
         handleFormSubmit: function(event) {
             event.preventDefault();
 
-            const jobTitle = this.submissionForm[4].value;
-            [this.submissionForm[1].value, this.submissionForm[2].value] =
-                jobTitle.split(" ");
+            const jobTitle = this.submissionForm[2].value;
+            const jobTitleDelim = jobTitle.split(" ");
+            
+            // Instantiate PDF request
+            const pdfURL = new URL(this.PDF_REQUEST_URL);
+            pdfURL.search = new URLSearchParams({
+                nameOfRole: this.submissionForm[1].value,
+                jobTitleStart: jobTitleDelim[0],
+                jobTitleEnd: jobTitleDelim[1],
+                companyName: this.submissionForm[3].value
+            }).toString();
 
-            this.submissionForm.submit();
-            this.clearFormInputs();
+            const reqConfig = {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/pdf'
+                },
+                responseType: 'blob'
+            }
+
+            axios.get(pdfURL.toString(), reqConfig)
+            .then(response => {
+                console.log(response);
+                const filename = response.request.getResponseHeader('Content-Disposition').
+                    replace('attachment; filename="', "").replace('"', "");
+                const mimeType = response.headers['content-type'];
+
+                download(response.data, filename, mimeType);
+                this.clearFormInputs();
+            }).catch(error => {
+                console.log(error);
+            });
         },
         clearFormInputs: function() {
             this.submissionForm[1].value = '';
             this.submissionForm[2].value = '';
             this.submissionForm[3].value = '';
-            this.submissionForm[4].value = '';
-            this.submissionForm[5].value = '';
         },
         init: function() {
             this.submissionForm = document.querySelector('form');
