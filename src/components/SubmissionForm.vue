@@ -18,7 +18,7 @@
                 <label for="companyName">Company Name</label>
                 <input required="required" type="text" name="companyName" placeholder="RedHat">
             </section>
-            
+
             <input @click="handleFormSubmit" type="submit" value="Submit">
         </fieldset>
     </form>
@@ -39,7 +39,17 @@ export default {
             const jobTitle = this.submissionForm[4].value;
             [this.submissionForm[1].value, this.submissionForm[2].value] =
                 jobTitle.split(" ");
+
+            this.clearFormInputs();
+
             this.submissionForm.submit();
+        },
+        clearFormInputs: function() {
+            this.submissionForm[1].value = '';
+            this.submissionForm[2].value = '';
+            this.submissionForm[3].value = '';
+            this.submissionForm[4].value = '';
+            this.submissionForm[5].value = '';
         },
         init: function() {
             this.submissionForm = document.querySelector('form');
