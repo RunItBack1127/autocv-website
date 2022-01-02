@@ -24,6 +24,9 @@ export default {
     Background,
     SubmissionForm,
     LoadingScreen
+  },
+  mounted() {
+    document.title = `AutoCV\xa0\xa0|\xa0\xa0Cover Letter Generator`;
   }
 }
 </script>
@@ -74,9 +77,9 @@ export default {
   font-family: "Radian Bold", sans-serif;
   font-size: 7.5rem;
   line-height: 7.5rem;
+  margin-bottom: 5rem;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 2.75rem;
 }
 
 /* UTILITY CLASSES */
@@ -112,6 +115,12 @@ export default {
 @media screen and (max-width: 576px) {
   #submission-form-container h1 {
     font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  #submission-form-container h1 {
+    margin-bottom: 2.75rem;
   }
 }
 </style>
