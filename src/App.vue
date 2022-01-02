@@ -24,6 +24,9 @@ export default {
     Background,
     SubmissionForm,
     LoadingScreen
+  },
+  mounted() {
+    document.title = `AutoCV\xa0\xa0|\xa0\xa0Cover Letter Generator`;
   }
 }
 </script>
