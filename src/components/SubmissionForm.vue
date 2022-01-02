@@ -1,5 +1,5 @@
 <template>
-    <form id="cv-submission-form">
+    <form>
         <fieldset>
             <section>
                 <label for="nameOfRole">Name Of Role</label>
@@ -135,6 +135,7 @@ input {
 input::placeholder {
     opacity: 0.5;
     color: #333;
+    font-style: italic;
 }
 
 input[type="text"] {
