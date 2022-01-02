@@ -1,11 +1,11 @@
 <template>
-  <div class="pa-alt-wh" id="site--background-container">
+  <div class="pa-alt-wh df-jcc-ac" id="site--background-container">
     <Background/>
   </div>
-  <div class="pa-alt-wh" id="site--loading-screen-container">
+  <div :class="this.$store.state.showLoadingScreen === true && 'show-loading-screen'" class="pa-alt-wh" id="site--loading-screen-container">
     <LoadingScreen/>
   </div>
-  <section class="pa-alt-wh" id="site--submission-form-container">
+  <section class="pa-alt-wh df-jcc-ac" id="site--submission-form-container">
     <div id="submission-form-container">
       <h1>AutoCV</h1>
       <SubmissionForm/>
@@ -50,13 +50,18 @@ export default {
 }
 
 #site--loading-screen-container {
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#site--loading-screen-container.show-loading-screen {
+  display: flex;
 }
 
 #site--submission-form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 1;
 }
 
@@ -81,6 +86,12 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.df-jcc-ac {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @font-face {

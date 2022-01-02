@@ -38,6 +38,9 @@ export default {
         handleFormSubmit: function(event) {
             event.preventDefault();
 
+            // Show loading screen
+            this.$store.state.showLoadingScreen = true;
+
             const jobTitle = this.submissionForm[2].value;
             const jobTitleDelim = jobTitle.split(" ");
             
@@ -67,6 +70,9 @@ export default {
 
                 download(response.data, filename, mimeType);
                 this.clearFormInputs();
+
+                // Hide loading screen
+                this.$store.state.showLoadingScreen = false;
             }).catch(error => {
                 console.log(error);
             });
