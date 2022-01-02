@@ -40,9 +40,8 @@ export default {
             [this.submissionForm[1].value, this.submissionForm[2].value] =
                 jobTitle.split(" ");
 
-            this.clearFormInputs();
-
             this.submissionForm.submit();
+            this.clearFormInputs();
         },
         clearFormInputs: function() {
             this.submissionForm[1].value = '';
