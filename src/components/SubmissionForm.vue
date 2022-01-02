@@ -1,6 +1,9 @@
 <template>
-    <form method="GET" action="autocv.herokuapp.com/generate">
+    <form id="cv-submission-form" method="GET" action="https://autocv.herokuapp.com/generate">
         <fieldset>
+            <input type="hidden" value="Web">
+            <input type="hidden" value="Developer">
+
             <section>
                 <label for="nameOfRole">Name Of Role</label>
                 <input type="text" name="nameOfRole" placeholder="Software Developer">
@@ -16,14 +19,31 @@
                 <input type="text" name="companyName" placeholder="RedHat">
             </section>
 
-            <input type="submit" value="Submit">
+            <input @click="handleFormSubmit" type="submit" value="Submit">
         </fieldset>
     </form>
 </template>
 
 <script>
 export default {
-    name: 'SubmissionForm'
+    name: 'SubmissionForm',
+    data() {
+        return {
+            submissionForm: null
+        }
+    },
+    methods: {
+        handleFormSubmit: function(event) {
+            event.preventDefault();
+            
+        },
+        init: function() {
+            this.submissionForm = document.querySelector('form');
+        }
+    },
+    mounted() {
+        this.init();
+    }
 }
 </script>
 
