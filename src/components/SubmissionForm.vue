@@ -29,7 +29,7 @@ export default {
     name: 'SubmissionForm',
     data() {
         return {
-            PDF_REQUEST_URL: 'https://autocv.herokuapp.com/generate',
+            PDF_REQUEST_URL: 'https://autocv-backend.herokuapp.com/generate',
             submissionForm: null,
             pdfRequest: null
         }
