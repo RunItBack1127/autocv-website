@@ -10,7 +10,7 @@ export default {
 
 <style scoped>
 #background-display-container {
-    background: center / 40% no-repeat url('cover-letter-background.png');
+    background: center / 40% no-repeat url('https://raw.githubusercontent.com/RunItBack1127/autocv-website/main/src/assets/cover-letter-background.png');
     width: 100%;
     height: 100%;
     opacity: 0.1;
