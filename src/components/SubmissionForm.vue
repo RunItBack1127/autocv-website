@@ -1,24 +1,24 @@
 <template>
     <form id="cv-submission-form" method="GET" action="https://autocv.herokuapp.com/generate">
         <fieldset>
-            <input type="hidden" value="Web">
-            <input type="hidden" value="Developer">
+            <input type="hidden" name="jobTitleStart" value="Web">
+            <input type="hidden" name="jobTitleEnd" value="Developer">
 
             <section>
                 <label for="nameOfRole">Name Of Role</label>
-                <input type="text" name="nameOfRole" placeholder="Software Developer">
+                <input required="required" type="text" name="nameOfRole" placeholder="Software Developer">
             </section>
 
             <section>
                 <label for="jobTitle">Job Title</label>
-                <input type="text" name="jobTitle" placeholder="Web Developer">
+                <input required="required" type="text" name="jobTitle" placeholder="Web Developer">
             </section>
 
             <section>
                 <label for="companyName">Company Name</label>
-                <input type="text" name="companyName" placeholder="RedHat">
+                <input required="required" type="text" name="companyName" placeholder="RedHat">
             </section>
-
+            
             <input @click="handleFormSubmit" type="submit" value="Submit">
         </fieldset>
     </form>
@@ -35,7 +35,11 @@ export default {
     methods: {
         handleFormSubmit: function(event) {
             event.preventDefault();
-            
+
+            const jobTitle = this.submissionForm[4].value;
+            [this.submissionForm[1].value, this.submissionForm[2].value] =
+                jobTitle.split(" ");
+            this.submissionForm.submit();
         },
         init: function() {
             this.submissionForm = document.querySelector('form');
